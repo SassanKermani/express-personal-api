@@ -49,6 +49,13 @@ var chats_list = [
 		name: "Dave",
 		message: " yaaaaaaaa..... see ya tomorrow "
 	}
+
+	//use for post later jsut putting it hear cus it kinda makes sence to store these hear
+	// {
+	// 	"name": "bill",
+	// 	"message": "hey guys whats up its a new day and i think we can not suck to bad today"
+	// }
+
 ];
 
 //putting it in the datta base and whiping anything that might have been there befor

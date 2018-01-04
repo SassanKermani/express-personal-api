@@ -75,7 +75,7 @@ app.get('/api', function api_index(req, res) {
 //GET
 
 //gets all the chats and shows them to the user
-app.get('/api/bla', function(req, res){
+app.get('/api/chats', function(req, res){
   db.chat.find(function(err, chats){
     if(err){ return console.log("index error: " + err); };
     res.json(chats);
@@ -91,12 +91,34 @@ app.get('/api/chats/:id', function(req, res){
   });
 });
 
+
 //POST
 
-// app.post('/api.chats', function(req, res){
-//   var newChat = new db.chat(req.body);
-//   newChat.save
-// })
+app.post('/api/chats', function(req, res){
+  console.log(req.body);
+  var newChat = new db.chat(req.body);
+  //console.log(newChat);
+  newChat.save(function handleDBChatSaved(err, savedChat){
+    res.json(savedChat);
+  });
+});
+
+
+//DELETE
+
+app.delete('/api/chats/:id', function(req, res){
+  console.log(req.params.id);
+  
+  let chatId = req.params.id;
+
+  db.chat.findOneAndRemove( { _id: chatId }, function(err, deletedChat){
+
+    console.log();
+    console.log(deletedChat);
+    res.json(deletedChat);
+    
+  });
+});
 
 //thid is a defult thing s it the user dose not get confused
 app.get('/*', function api_index(req, res) {
